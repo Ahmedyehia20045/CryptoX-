@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoX - Rewards</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Adcash Library for Pop-Under and Interstitial -->
+    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+    <!-- Effectiveratecpm Interstitial Script -->
+    <script type='text/javascript' src='//pl26279588.effectiveratecpm.com/86/a2/f6/86a2f6cc8ccad2b003352c4c9e5bca73.js'></script>
 </head>
 <body>
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <a href="index.html">Home</a>
         <a href="dashboard.html">Dashboard</a>
@@ -18,25 +23,168 @@
         <a href="login.html">Login/Signup</a>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
+        <!-- Header -->
         <header>
             <div class="hamburger" onclick="toggleSidebar()">☰</div>
             <div class="logo">CryptoX</div>
             <div class="points">Points: <span id="points">0</span></div>
         </header>
 
+        <!-- Rewards Section -->
         <section class="rewards-section">
             <h1>Rewards</h1>
-            <p>Start now! Earn points and redeem exclusive rewards.</p>
+            <p>Earn points by completing tasks and redeem them for exclusive rewards!</p>
             <div class="rewards-buttons">
-                <button class="btn reward-btn" onclick="addPoints(10)">Claim Now (Video Ads)</button>
-                <button class="btn reward-btn" onclick="addPoints(10)">Direct Link (Pop Ads)</button>
-                <button class="btn reward-btn" onclick="addPoints(10)">Instant Rewards (Smart Links)</button>
+                <button class="reward-btn" onclick="rotateAds()">Claim Pop Ads (10 Points)</button>
+                <button class="reward-btn" onclick="showVideoAd()">Claim Video Ads (20 Points)</button>
+                <button class="reward-btn" onclick="addPoints(30)">Claim Daily Bonus (30 Points)</button>
             </div>
-            <p class="rewards-footer">Start now! Support us, earn points, and redeem them for Amazon cards, Google Play credits, mobile top-ups, or discount coupons. Reach the minimum threshold, contact us at +123456789, and claim your prize!</p>
+            <p class="rewards-footer">More rewards coming soon!</p>
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="logo">CryptoX</div>
+            <p>Start now! Browse news, earn points, and redeem exclusive rewards.</p>
+        </footer>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Ad Scripts -->
+    <!-- Adcash Pop-Under -->
+    <script type="text/javascript">
+        aclib.runPop({
+            zoneId: '9773026',
+        });
+    </script>
+    <!-- Adcash Interstitial -->
+    <script type="text/javascript">
+        aclib.runInterstitial({
+            zoneId: '9773034',
+        });
+    </script>
+    <!-- Jyzkut Pop-Under -->
+    <script async src="https://jyzkut.com/p/waWQiOjExOTkxNTMsInNpZCI6MTQ5Nzk4Miwid2lkIjo3MDg1MzQsInNyYyI6Mn0=eyJ.js"></script>
+    <!-- Bugaruche Pop-Under -->
+    <script>
+    (function(sgny){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = sgny || {};
+    s.src = "\/\/bugaruche.com\/ciD\/9\/6vb.2M5\/lxS\/WKQl9WNTjvIpzRNozDAG2-M\/i\/0P2UMsjtMU3WMeDWYUzk";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+    <!-- Gruvaphiwo Video Ad -->
+    <script>
+    (function(pasz){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = pasz || {};
+    s.src = "\/\/gruvaphiwo.com\/bEX.V\/sIdsGmlI0bYaWycS\/xeZm\/9\/u\/ZhUNl\/kUPdTYYCykMizsc\/xuNrTxc-tgNFjpIfzKNVzTE-1HObAU";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- JavaScript for Ad Rotation and Points -->
+    <script>
+        // Points System
+        let points = 0;
+        document.getElementById('points').innerText = points;
+
+        function addPoints(amount) {
+            points += amount;
+            document.getElementById('points').innerText = points;
+            alert(`You earned ${amount} points! Total: ${points}`);
+        }
+
+        // Ad Rotation Logic
+        let adIndex = 0;
+        const ads = [
+            () => { // Adcash Pop-Under
+                aclib.runPop({ zoneId: '9773026' });
+                addPoints(10);
+            },
+            () => { // Adcash Interstitial
+                aclib.runInterstitial({ zoneId: '9773034' });
+                addPoints(10);
+            },
+            () => { // Jyzkut Pop-Under
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = "https://jyzkut.com/p/waWQiOjExOTkxNTMsInNpZCI6MTQ5Nzk4Miwid2lkIjo3MDg1MzQsInNyYyI6Mn0=eyJ.js";
+                document.body.appendChild(script);
+                addPoints(10);
+            },
+            () => { // Bugaruche Pop-Under
+                (function(sgny){
+                    var d = document,
+                        s = d.createElement('script'),
+                        l = d.scripts[d.scripts.length - 1];
+                    s.settings = sgny || {};
+                    s.src = "\/\/bugaruche.com\/ciD\/9\/6vb.2M5\/lxS\/WKQl9WNTjvIpzRNozDAG2-M\/i\/0P2UMsjtMU3WMeDWYUzk";
+                    s.async = true;
+                    s.referrerPolicy = 'no-referrer-when-downgrade';
+                    l.parentNode.insertBefore(s, l);
+                })({});
+                addPoints(10);
+            },
+            () => { // Effectiveratecpm Interstitial
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = '//pl26279588.effectiveratecpm.com/86/a2/f6/86a2f6cc8ccad2b003352c4c9e5bca73.js';
+                document.head.appendChild(script);
+                addPoints(10);
+            },
+            () => { // Direct Link 1 (Effectiveratecpm)
+                window.open("https://www.effectiveratecpm.com/did0ypgph8?key=1a2da45ef2cc1bc8c9b1871aa026aa83", "_blank");
+                addPoints(10);
+            },
+            () => { // Direct Link 2 (Bugaruche 1)
+                window.open("https://bugaruche.com/d.m_FizwdYGmN/voZJGaUG/Segms9/u_ZeUEl/kDPwT/YnyAMhzLcbwCN-jJAQtqNNjhIdzsNfztAU2iMvQF", "_blank");
+                addPoints(10);
+            },
+            () => { // Direct Link 3 (Bugaruche 2)
+                window.open("https://bugaruche.com/d.m/Faz/dWGPNTvUZmGHUe/aeEmO9EucZJUMlmkSPMTCYCyeMTzEc/xgNmjRcmt/NWjGIhzFNhzJE/2LOIA_", "_blank");
+                addPoints(10);
+            },
+            () => { // Direct Link 4 (Bugaruche 3)
+                window.open("https://bugaruche.com/b.3rV/0xPo3OpHv/bSmoVXJJZaDY0R2QMSj-Ms3-MwDqYeyFL-TtYFybMXznccwPNij/Mt", "_blank");
+                addPoints(10);
+            }
+        ];
+
+        function rotateAds() {
+            ads[adIndex]();
+            adIndex = (adIndex + 1) % ads.length; // Rotate to the next ad
+        }
+
+        // Video Ad Function
+        function showVideoAd() {
+            (function(pasz){
+                var d = document,
+                    s = d.createElement('script'),
+                    l = d.scripts[d.scripts.length - 1];
+                s.settings = pasz || {};
+                s.src = "\/\/gruvaphiwo.com\/bEX.V\/sIdsGmlI0bYaWycS\/xeZm\/9\/u\/ZhUNl\/kUPdTYYCykMizsc\/xuNrTxc-tgNFjpIfzKNVzTE-1HObAU";
+                s.async = true;
+                s.referrerPolicy = 'no-referrer-when-downgrade';
+                l.parentNode.insertBefore(s, l);
+            })({});
+            addPoints(20);
+        }
+
+        // Sidebar Toggle
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
